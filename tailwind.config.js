@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'Section-Banner': "url('/src/Assets/img_learnlanguage.jpg')",
+      }
+    },
   },
   plugins: [],
 }

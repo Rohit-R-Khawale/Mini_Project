@@ -1,14 +1,15 @@
 import React from 'react'
-function Card_Section() {
+import { Link } from 'react-router-dom';
 
+function Card_Section() {
+    
 
     // Data for The Cards 
-    const cardData=[
-        {}
+    const cardData=[{},{},{},{},{},
     ];
   return (
-    <main className='w-full bg-green-300 h-screen'>
-        <div className="p-2 flex">
+    <main className='w-full bg-green-300 h-screen overflow-auto py-3 '>
+        <div className="p-2 flex flex-wrap gap-3  ">
             {cardData.map((index,data)=>(
                 <Cards key={index}{...data}/>
             ))}
@@ -19,13 +20,15 @@ function Card_Section() {
 
 export default Card_Section;
 
-const Cards=()=>{
+const Cards=(props)=>{
     return (
         <main className='w-72 bg-blue-400 h-80 overflow-hidden rounded-lg'>
-            <div className="w-full bg-red-500 h-28 ">
-                <p></p>
-            </div>
-            <div className="w-full"></div>
+            <Link to="/cardcontent">
+                <div className="w-full bg-red-500 h-28 ">
+                    <p></p>
+                </div>
+                <div className="w-full"></div>
+            </Link>
         </main>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 // import react icons
 import { CgMenu } from "react-icons/cg";
 import { PiGreaterThan } from "react-icons/pi"; 
@@ -34,20 +35,21 @@ if(sidebarVisible==="hidden") {
 // Main HTMLS and CSS code
 return (
 <>
-<navbar className='flex pl-5 justify-between mx-2 sticky'  >
+<navbar className='flex pl-5 justify-between mx-2 sticky min-h-14'  >
 <div className="flex align-middle ml-2 gap-5 w-fit ">
 
 < CgMenu className='text-3xl text-[#5F6368] scale-90 mr-3 my-auto hover:cursor-pointer' onClick={sidebarHandler}/>
-    <img src={LOGO} alt="classroom" className='w-10 h-10 scale-90 my-auto '/>
-    <p className='my-auto text-3xl text-[#5F6368] hover:text-[#1E8E3E] hover:underline hover:cursor-pointer'>Classroom</p>
+    <Link to="/" className='my-auto '><img src={LOGO} alt="classroom" className='w-10 h-10 scale-90 '/></Link>
+    <Link to="/" className='my-auto text-3xl text-[#5F6368] hover:text-[#1E8E3E] hover:underline hover:cursor-pointer'>Classroom</Link>
 
-    <span className={isCard}>
+{/* This section should be visible when rthe focus is inside a Card */}
+    {/* <span className={isCard}>
         <PiGreaterThan className='text-2xl text-[#5F6368] w-fit h-fit my-auto relative top-1 scale-90 font-bold max-md:hidden' />
         <span className='text-[#646368] scale-90 hover:underline hover:cursor-pointer hover:text-blue-500 max-md:hidden'>
             <p className='font-bold text-2xl'>Card Name</p>
             Card owner Name
         </span>
-    </span>
+    </span> */}
 </div>
 
 {/* Last Sections Profile/ Add Class and Apps */}

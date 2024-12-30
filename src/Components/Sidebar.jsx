@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { useState } from 'react';
 import {sidebarVisible} from "./Navbar";
@@ -74,10 +75,13 @@ return (
 {/* Home Calendar Section */}
 <section className="flex flex-col">
     {/* Home */}
+    <Link to="/">
     <span className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500 '>
-        <IoMdHome className=' text-3xl'/>
-        <p className='my-auto text-black'>Home</p>
+        
+            <IoMdHome className=' text-3xl'/>
+            <p className='my-auto text-black'>Home</p>
     </span>
+    </Link>
     {/* Calendar */}
     <span className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500 '>
         <SlCalender className=' text-3xl' />
@@ -136,10 +140,10 @@ return (
 {/* Archived Classes and Settings */}
 <section>
 {/* Archived Section */}
-<span className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500'>
+<Link to="/archived" className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500'>
         <MdOutlineArchive className=' text-3xl'/>
         <p className='my-auto text-black'>Archived classes</p>
-</span>
+</Link>
 
 {/* Settings */}
 <span className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500'>
@@ -159,13 +163,13 @@ export default Sidebar;
 // Classroom Card/ Profile Card
 const ProfCard=(props)=>{
     return(
-        <>
+        <Link to="/cardcontent">
         <span className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500'>
         
         <img src={props.img} alt={props.alt} className='w-10 h-10 rounded-full bg-blue-500 overflow-hidden'/>
         
         <p className='my-auto text-black'>{props.name}</p>
         </span>
-        </>
+        </Link>
     )
 }
