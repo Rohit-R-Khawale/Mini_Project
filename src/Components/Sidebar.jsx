@@ -69,8 +69,8 @@ function Sidebar() {
 
 const {sidebarVisible}=useContext(SidebarContext);
 return (
-<sidebar className={sidebarVisible}>
-<main className='border-r-2 overflow-x-auto w-60 hover:transition-all h-screen flex flex-col  text-[#5F6368] align-middle py-3 gap-3 overflow-y-auto max-md:w-60 max-sm:w-full '>
+<div className={sidebarVisible}>
+<main className='border-r-2 overflow-x-auto w-60 hover:transition-all h-full flex flex-col  text-[#5F6368] align-middle py-3 gap-3 overflow-y-auto max-md:w-60 max-sm:w-full'>
 
 {/* Home Calendar Section */}
 <section className="flex flex-col">
@@ -146,14 +146,14 @@ return (
 </Link>
 
 {/* Settings */}
-<span className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500'>
+<Link to="/settings" className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500'>
     <IoSettingsOutline className=' text-3xl'/>
     <p className='my-auto text-black'>Setting</p>
-</span>
+</Link>
 </section>
 
 </main>
-</sidebar>
+</div>
 );}
 
 export default Sidebar;

@@ -8,8 +8,8 @@ function Card_Section() {
     const cardData=[{},{},{},{},{},
     ];
   return (
-    <main className='w-full bg-green-300 h-screen overflow-auto py-3 '>
-        <div className="p-2 flex flex-wrap gap-3  ">
+    <main className='w-full mx-auto bg-green-300 h-screen overflow-auto py-3 '>
+        <div className="p-2 flex flex-wrap  mx-2 ">
             {cardData.map((index,data)=>(
                 <Cards key={index}{...data}/>
             ))}
@@ -22,7 +22,7 @@ export default Card_Section;
 
 const Cards=(props)=>{
     return (
-        <main className='w-72 bg-blue-400 h-80 overflow-hidden rounded-lg'>
+        <main className='w-72 bg-blue-400 h-80 overflow-hidden rounded-lg m-2'>
             <Link to="/cardcontent">
                 <div className="w-full bg-red-500 h-28 ">
                     <p></p>

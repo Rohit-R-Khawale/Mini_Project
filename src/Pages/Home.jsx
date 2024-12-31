@@ -7,9 +7,8 @@ import Card_Section from "../Components/Card_Section";
 import Card_Content from "../Components/Card_Content";
 //  importing Context from SidebarContext.js
 import { SidebarContext } from "../Context/SidebarContext";
-import Stream from "./stream";
-import Classroom from "./Classwork";
 import Archived from "./Archieved_Classes";
+import Settings from "./Settings";
 
 function Home() {
   // Used to Show/Hide Sidebar in the Webpage
@@ -25,7 +24,7 @@ function Home() {
         <hr />
         <span className="flex max-sm:block overflow-hidden">
           <Sidebar />
-          <span className=" w-full">
+          <span className="w-full">
             
             {/* Note: There can only be one Routes in the entire App */}
             <Routes>
@@ -34,6 +33,7 @@ function Home() {
               <Route path="/cardcontent/classwork" element={<Card_Content/>}/>,
               <Route path="/cardcontent/people" element={<Card_Content/>}/>,
               <Route path="/archived" element={<Archived/>}/>,
+              <Route path="/settings" element={<Settings/>}/>,
             </Routes>
           </span>
          

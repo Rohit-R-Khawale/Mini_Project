@@ -35,10 +35,10 @@ if(sidebarVisible==="hidden") {
 // Main HTMLS and CSS code
 return (
 <>
-<navbar className='flex pl-5 justify-between mx-2 sticky min-h-14'  >
-<div className="flex align-middle ml-2 gap-5 w-fit ">
+<main className='flex px-5 justify-between sticky min-h-14 w-full'  >
+<div className="flex align-middle gap-5 w-fit ">
 
-< CgMenu className='text-3xl text-[#5F6368] scale-90 mr-3 my-auto hover:cursor-pointer' onClick={sidebarHandler}/>
+< CgMenu className='text-3xl text-[#5F6368] scale-90  my-auto hover:cursor-pointer' onClick={sidebarHandler}/>
     <Link to="/" className='my-auto '><img src={LOGO} alt="classroom" className='w-10 h-10 scale-90 '/></Link>
     <Link to="/" className='my-auto text-3xl text-[#5F6368] hover:text-[#1E8E3E] hover:underline hover:cursor-pointer'>Classroom</Link>
 
@@ -63,7 +63,7 @@ return (
 
 <img src={Profile} alt="Profile Image" className='w-10 h-10 rounded-full cover hover:cursor-pointer max-md:hidden ' />
 </div>
-</navbar>
+</main>
 
 </>
 );}
