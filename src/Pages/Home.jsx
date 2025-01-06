@@ -7,8 +7,11 @@ import Card_Section from "../Components/Card_Section";
 import Card_Content from "../Components/Card_Content";
 //  importing Context from SidebarContext.js
 import { SidebarContext } from "../Context/SidebarContext";
+
+
 import Archived from "./Archieved_Classes";
 import Settings from "./Settings";
+import SignUp from "./signUp";
 
 function Home() {
   // Used to Show/Hide Sidebar in the Webpage

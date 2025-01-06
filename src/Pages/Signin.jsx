@@ -1,7 +1,16 @@
+import react, { useState, useContext} from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, redirect, redirectDocument } from "react-router-dom";
 import Classroom from "../Assets/logo_square_rounded.svg"
+import { render } from "@testing-library/react";
+import Home from "./Home"
+import {SigninContext} from "../Context/SigninContext"
+import { GiDefibrilate } from "react-icons/gi";
 export default function App() {
+
+  const {isLoggedIn}=useContext(SigninContext);
+  const {setIsLoggedIn}=useContext(SigninContext);
+
   const {
     register,
     handleSubmit,
@@ -17,13 +26,21 @@ export default function App() {
     })
   }
 
+  // ************************************************************
+
+
   const onSubmit =async (data) => {
     await delay(2);
+
+    if(isLoggedIn){
+      setIsLoggedIn(false);
+    }else{
+      setIsLoggedIn(true);
+    }
+    
   };
 
-  console.log(watch("example")); // watch input value by passing the name of it
-
-
+  // console.log(watch("example")); // watch input value by passing the name of it
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <main className="w-full h-screen flex flex-col ">
@@ -37,41 +54,50 @@ export default function App() {
         >
             <h2 className="mx-auto text-2xl font-mono">Sign In</h2>
           {/* register your input into the hook by invoking the "register" function */}
+          {/* USERNAME */}
           <input
             placeholder="Username"
             {...register("username", {
               required: { value: true, message: "this field is required"},
-              minLength: { value: "3", message: "the minimum length is 3"},
-              maxLength: { value: "10", message: "the maximum length is 10"},
+              minLength: { value: "4", message: "the minimum length is 4"},
+              maxLength: { value: "20", message: "the maximum length is 20"},
             })}
             type="text"
             className="bg-gray-300 border-2 border-gray-400 p-2 rounded-lg "
           />
           {errors.username && <div>{errors.username.message}</div>}
+          
+
           {/* include validation with required or other standard HTML validation rules */}
+          {/* PASSWORD FIELD */}
           <input
             {...register("password", {
               required: true,
               message: "This field is required",
-              minLength: { value: +"8", message: "The mininmum Length is 8" },
-              maxlength: { value: "10", message: "The maximum length is 10" },
+              minLength: { value: "6", message: "The mininmum Length is 8" },
+              maxlength: { value: "13", message: "The maximum length is 10" },
             })}
             type="password"
             placeholder="Password"
             className="bg-gray-300 border-2 border-gray-400 p-2 rounded-lg "
           />
-          {/* errors will return when field validation fails  */}
+          
+          {/* following is the code if errors will return when the "Password" field validation fails  */}
           {errors.password && <div>{errors.password.message}</div>}
+
+
           <input
             disabled={isSubmitting}
             type="submit"
             className="border-2 border-black bg-green-400 p-2 rounded-xl disabled:bg-slate-600 hover:cursor-pointer hover:bg-green-300"
-          /> 
+          />
+          {/* Forgot passwors or Recover account */}
           <span className="flex gap-2 justify-between text-xs">
               <Link to="" className="text-red-400 hover:underline hover:cursor-pointer">Forgot Password!</Link>
               <Link to="" className="text-red-400 hover:underline hover:cursor-pointer">Recover Account!</Link>
           </span>
-          <p>Dont have an Account? <Link to="/signup" className="text-blue-400 underline hover:text-blue-600 ml-2">SignUp</Link></p>
+          {/* in case you dont have an account */}
+          <p>Don't have an Account? <Link to="/signup" className="text-blue-400 underline hover:text-blue-600 ml-2">SignUp</Link></p>
         </form>
     </span>
     </main>

@@ -27,7 +27,7 @@ const Card_Content = () => {
   }
   
   return (
-    <main className="w-full bg-blue-300 h-screen">
+    <main className="w-full bg-blue-200 h-screen">
       <Card_Navbar/>
       <div className="overflow-y-auto h-full scroll-smooth" >
       <span>

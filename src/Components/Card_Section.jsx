@@ -5,7 +5,7 @@ function Card_Section() {
     
 
     // Data for The Cards 
-    const cardData=[{},{},{},{},{},
+    const cardData=[{Class:"Java Programming",owner:"PanitaJadhav"},{},{},{},{},
     ];
   return (
     <main className='w-full mx-auto bg-green-300 h-screen overflow-auto py-3 '>
@@ -14,10 +14,10 @@ function Card_Section() {
                 <Cards key={index}{...data}/>
             ))}
         </div>
-    
+        
     </main>
   )}
-
+  
 export default Card_Section;
 
 const Cards=(props)=>{
@@ -25,7 +25,8 @@ const Cards=(props)=>{
         <main className='w-72 bg-blue-400 h-80 overflow-hidden rounded-lg m-2'>
             <Link to="/cardcontent">
                 <div className="w-full bg-red-500 h-28 ">
-                    <p></p>
+                    <p className='text-black mx-auto'>{props.Class}</p>
+                    <p>{props.owner}</p>
                 </div>
                 <div className="w-full"></div>
             </Link>
