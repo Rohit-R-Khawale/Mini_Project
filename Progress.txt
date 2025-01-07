@@ -1,5 +1,0 @@
-Completed Sidebar 
-Remining Task of Sidebar: 
-    1. It should shrin when clicked on icon on the navbar
-    2. The routing part of the sidebar does not work
-    3. Make it responsive and it should be shrunken by default but should come out when hovered upon

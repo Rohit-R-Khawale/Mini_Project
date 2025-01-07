@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Route, Routes } from "react-router-dom";
+import {Route, Routes,Outlet } from "react-router-dom";
 // importing Components
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
@@ -28,16 +28,9 @@ function Home() {
         <span className="flex max-sm:block overflow-hidden">
           <Sidebar />
           <span className="w-full">
+            {/* Note: You can use Outlet to render the child routes of the parent route */}
+          <Outlet />
             
-            {/* Note: There can only be one Routes in the entire App */}
-            <Routes>
-              <Route path="/" element={<Card_Section/>}/>,
-              <Route path="/cardcontent" element={<Card_Content/>}/>
-              <Route path="/cardcontent/classwork" element={<Card_Content/>}/>,
-              <Route path="/cardcontent/people" element={<Card_Content/>}/>,
-              <Route path="/archived" element={<Archived/>}/>,
-              <Route path="/settings" element={<Settings/>}/>,
-            </Routes>
           </span>
          
         </span>

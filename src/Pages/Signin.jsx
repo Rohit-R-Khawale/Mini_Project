@@ -1,16 +1,13 @@
-import react, { useState, useContext} from "react";
+import react, {useContext} from 'react';
 import { useForm } from "react-hook-form";
-import { Link, redirect, redirectDocument } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import Classroom from "../Assets/logo_square_rounded.svg"
-import { render } from "@testing-library/react";
-import Home from "./Home"
+import Home from "./Home";
 import {SigninContext} from "../Context/SigninContext"
-import { GiDefibrilate } from "react-icons/gi";
-export default function App() {
 
-  const {isLoggedIn}=useContext(SigninContext);
-  const {setIsLoggedIn}=useContext(SigninContext);
 
+export default function Signin() {
+  
   const {
     register,
     handleSubmit,
@@ -18,6 +15,7 @@ export default function App() {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  // This function u=is used add delay after submission of the form to symbolise processing
   const delay=(d)=>{
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
@@ -28,14 +26,17 @@ export default function App() {
 
   // ************************************************************
 
+// This is used to check whether the user is logged in or not 
+  const {isLoggedIn}=useContext(SigninContext);
+  const {setIsLoggedIn}=useContext(SigninContext);
 
   const onSubmit =async (data) => {
     await delay(2);
-
-    if(isLoggedIn){
-      setIsLoggedIn(false);
+    // NOTE: change this logic and make the authentication more meaningful 
+    if(isLoggedIn==="Signin"){
+      setIsLoggedIn("Home");
     }else{
-      setIsLoggedIn(true);
+      setIsLoggedIn("Signin");
     }
     
   };

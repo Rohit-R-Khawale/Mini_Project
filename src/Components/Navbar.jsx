@@ -42,7 +42,7 @@ return (
     <Link to="/" className='my-auto '><img src={LOGO} alt="classroom" className='w-10 h-10 scale-90 '/></Link>
     <Link to="/" className='my-auto text-3xl text-[#5F6368] hover:text-[#1E8E3E] hover:underline hover:cursor-pointer'>Classroom</Link>
 
-{/* This section should be visible when rthe focus is inside a Card */}
+{/* This section should be visible when the focus is inside a Card */}
     {/* <span className={isCard}>
         <PiGreaterThan className='text-2xl text-[#5F6368] w-fit h-fit my-auto relative top-1 scale-90 font-bold max-md:hidden' />
         <span className='text-[#646368] scale-90 hover:underline hover:cursor-pointer hover:text-blue-500 max-md:hidden'>
@@ -61,7 +61,9 @@ return (
     <IoApps className='text-xl my-auto '/>
 </span>
 
+<a href="https://accounts.google.co.in/" target="_blank">
 <img src={Profile} alt="Profile Image" className='w-10 h-10 rounded-full cover hover:cursor-pointer max-md:hidden ' />
+</a>
 </div>
 </main>
 
