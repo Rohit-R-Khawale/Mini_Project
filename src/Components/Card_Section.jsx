@@ -8,7 +8,7 @@ function Card_Section() {
     const cardData=[{Class:"Java Programming",owner:"PanitaJadhav"},{},{},{},{},
     ];
   return (
-    <main className='w-full mx-auto bg-green-300 h-screen overflow-auto py-3 '>
+    <main className='w-full mx-auto bg-green-300 h-max overflow-auto py-3 '>
         <div className="p-2 flex flex-wrap  mx-2 ">
             {cardData.map((index,data)=>(
                 <Cards key={index}{...data}/>

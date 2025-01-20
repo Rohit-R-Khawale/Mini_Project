@@ -124,10 +124,10 @@ return (
 
 {/* Enrolled Classes Section */}
 <section className={EnrolledVisible}>
-<span className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500'>
+<Link to='/todo' className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500'>
         <LuListTodo className=' text-3xl'/>
         <p className='my-auto text-black'>To-Do</p>
-</span>
+</Link>
 
 {EnrolledClasses.map((data,index)=>(
     <ProfCard key={index} {...data}/>

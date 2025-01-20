@@ -3,20 +3,12 @@ import {Route, Routes,Outlet } from "react-router-dom";
 // importing Components
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
-import Card_Section from "../Components/Card_Section";
-import Card_Content from "../Components/Card_Content";
 //  importing Context from SidebarContext.js
 import { SidebarContext } from "../Context/SidebarContext";
-
-
-import Archived from "./Archieved_Classes";
-import Settings from "./Settings";
-import SignUp from "./signUp";
 
 function Home() {
   // Used to Show/Hide Sidebar in the Webpage
   const [sidebarVisible, setSidebarVisible] = useState("visible");
-  
     
    
   return (
@@ -28,11 +20,10 @@ function Home() {
         <span className="flex max-sm:block overflow-hidden">
           <Sidebar />
           <span className="w-full">
-            {/* Note: You can use Outlet to render the child routes of the parent route */}
+          {/* Note: You can use Outlet to render the child routes of the parent route */}
           <Outlet />
-            
+
           </span>
-         
         </span>
         
       </SidebarContext.Provider>

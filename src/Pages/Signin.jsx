@@ -1,9 +1,8 @@
 import react, {useContext} from 'react';
 import { useForm } from "react-hook-form";
-import { Link, redirect } from "react-router-dom";
-import Classroom from "../Assets/logo_square_rounded.svg"
-import Home from "./Home";
-import {SigninContext} from "../Context/SigninContext"
+import { Link } from "react-router-dom";
+import Classroom from "../Assets/logo_square_rounded.svg";
+import {SigninContext} from "../Context/SigninContext";
 
 
 export default function Signin() {
