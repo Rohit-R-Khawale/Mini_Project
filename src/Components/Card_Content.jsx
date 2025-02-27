@@ -7,6 +7,7 @@ import Card_Navbar from './Card_Navbar';
 import Stream from "../Pages/stream";
 import Classwork from "../Pages/Classwork";
 import People from "../Pages/People";
+import Marks from "../Pages/Marks";
 const Card_Content = () => {
   let component;
   let path=useResolvedPath();
@@ -24,6 +25,8 @@ const Card_Content = () => {
     case "/cardcontent/people":
       component = <People/>;
       break;
+    case "/cardcontent/marks":
+      component = <Marks/>
   }
   
   return (

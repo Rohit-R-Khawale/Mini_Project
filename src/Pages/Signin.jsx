@@ -77,7 +77,7 @@ export default function Signin() {
               minLength: { value: "6", message: "The mininmum Length is 8" },
               maxlength: { value: "13", message: "The maximum length is 10" },
             })}
-            type="password"
+            type="password"   
             placeholder="Password"
             className="bg-gray-300 border-2 border-gray-400 p-2 rounded-lg "
           />

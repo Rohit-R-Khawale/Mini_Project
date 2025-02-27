@@ -53,7 +53,7 @@ const handleLater=()=>{
         <option value="Classroom 5">Classroom 5</option>
       </select>
       {/* No due date */}
-      <div className="bg-red-400  mx-auto text-2xl w-full p-1 rounded-md border-2">
+      <div className="bg-[#5CBD8D]  mx-auto text-2xl w-full p-1 rounded-md border-2">
         <span className='flex justify-between' onClick={handlenoDDate}>
           <p onClick={handlenoDDate} className='hover:cursor-pointer'>No due Date</p>
           <MdOutlineUnfoldMore className='my-auto hover:cursor-pointer'/>
@@ -68,7 +68,7 @@ const handleLater=()=>{
         </span>
       </div>
       {/* This Week */}
-      <div className="bg-red-400  mx-auto text-2xl w-full p-1 rounded-md border-2">
+      <div className="bg-[#5CBD8D]  mx-auto text-2xl w-full p-1 rounded-md border-2">
         <span className='flex justify-between' onClick={handleThisWeek}>
           <p onClick={handleThisWeek} className='hover:cursor-pointer'>This Week</p>
           <MdOutlineUnfoldMore className='my-auto hover:cursor-pointer'/>
@@ -82,7 +82,7 @@ const handleLater=()=>{
         </span>
       </div>
       {/* Next Week */}
-      <div className="bg-red-400  mx-auto text-2xl w-full p-1 rounded-md border-2">
+      <div className="bg-[#5CBD8D]  mx-auto text-2xl w-full p-1 rounded-md border-2">
         <span className='flex justify-between' onClick={handleNextWeek}>
           <p onClick={handleNextWeek} className='hover:cursor-pointer'>Next Week</p>
           <MdOutlineUnfoldMore className='my-auto hover:cursor-pointer'/>
@@ -96,7 +96,7 @@ const handleLater=()=>{
         </span>
       </div>
       {/* Later */}
-      <div className="bg-red-400  mx-auto text-2xl w-full p-1 rounded-md border-2">
+      <div className="bg-[#5CBD8D]  mx-auto text-2xl w-full p-1 rounded-md border-2">
         <span className='flex justify-between' onClick={handleLater}>
           <p onClick={handleLater} className='hover:cursor-pointer'>Later</p>
           <MdOutlineUnfoldMore className='my-auto hover:cursor-pointer'/>

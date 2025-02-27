@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {Route, Routes,Outlet } from "react-router-dom";
 // importing Components
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 //  importing Context from SidebarContext.js
 import { SidebarContext } from "../Context/SidebarContext";
+// importing react icons
+import { IoMdClose } from "react-icons/io";
 
+// The popContex is not working as it is not configured correctly so do it .....
 function Home() {
   // Used to Show/Hide Sidebar in the Webpage
   const [sidebarVisible, setSidebarVisible] = useState("visible");
-    
+  
+
    
   return (
     // Routing was done on this page because the content will change in this page only and the Navbar and Sidebar will remain same in all other cases.
     <main >
-      <SidebarContext.Provider value={{ sidebarVisible, setSidebarVisible }}>
+      <SidebarContext.Provider value={{sidebarVisible, setSidebarVisible }}>
+        
+
         <Navbar /> {/*Rendered Card_Navbar*/}
         <hr />
         <span className="flex max-sm:block overflow-hidden">
@@ -25,7 +31,6 @@ function Home() {
 
           </span>
         </span>
-        
       </SidebarContext.Provider>
       
     </main>
@@ -33,3 +38,4 @@ function Home() {
 }
 
 export default Home;
+

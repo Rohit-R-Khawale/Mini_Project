@@ -66,7 +66,7 @@ const Stream = () => {
 
 
         {/* Announcements */}
-        <div className="w-full h-screen bg-red-400 rounded-xl ">
+        <div className="w-full h-screen rounded-xl ">
           <div className="mx-2 my-3 p-2 bg-white h-fit border-2 shadow-xl rounded-xl text-gray-500 hover:text-black flex  align-middle gap-2 hover:cursor-pointer" onClick={handleAnnouncement}>
             <img src={Profile} alt="Profile" className="w-12 h-12 rounded-full "/>
             <p className="my-auto">Announce Something to your Class</p>

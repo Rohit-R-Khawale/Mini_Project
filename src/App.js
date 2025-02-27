@@ -14,7 +14,7 @@ import Todo from "./Components/todo/Todo.jsx";
 import { SigninContext } from "./Context/SigninContext.js";
 function App() {
   // this ensures that the usrer is currently logged in the session
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   // This is to ensure that the signin page comes first rather than the home page
   let Page;
   if (isLoggedIn) {
@@ -33,6 +33,7 @@ function App() {
             <Route path="/cardcontent" element={<Card_Content />} />
             <Route path="/cardcontent/classwork" element={<Card_Content />} />,
             <Route path="/cardcontent/people" element={<Card_Content />} />,
+            <Route path="/cardcontent/marks" element={<Card_Content />} />,
             <Route path="/archived" element={<Archived />} />,
             <Route path="/settings" element={<Settings />} />,
             <Route path="/todo" element={<Todo />}/>
