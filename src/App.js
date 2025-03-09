@@ -12,9 +12,13 @@ import Todo from "./Components/todo/Todo.jsx";
 
 // importing context
 import { SigninContext } from "./Context/SigninContext.js";
+import Stream from "./Pages/stream.jsx";
+import Classwork from "./Pages/Classwork.jsx";
+import People from "./Pages/People.jsx";
+import Marks from "./Pages/Marks.jsx";
 function App() {
   // this ensures that the usrer is currently logged in the session
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   // This is to ensure that the signin page comes first rather than the home page
   let Page;
   if (isLoggedIn) {
@@ -30,10 +34,12 @@ function App() {
         <Routes>
           <Route path="/" element={Page}>
             <Route path="/" element={<Card_Section />} />,
-            <Route path="/cardcontent" element={<Card_Content />} />
-            <Route path="/cardcontent/classwork" element={<Card_Content />} />,
-            <Route path="/cardcontent/people" element={<Card_Content />} />,
-            <Route path="/cardcontent/marks" element={<Card_Content />} />,
+            <Route path="/cardcontent/:id" element={<Card_Content />}>
+                <Route path="/cardcontent/:id" element={<Stream/>} />
+                <Route path="/cardcontent/:id/classwork" element={<Classwork/>} />
+                <Route path="/cardcontent/:id/people" element={<People/>} />
+                <Route path="/cardcontent/:id/marks" element={<Marks/>} />
+            </Route>
             <Route path="/archived" element={<Archived />} />,
             <Route path="/settings" element={<Settings />} />,
             <Route path="/todo" element={<Todo />}/>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useState,useEffect } from "react";
+import axios from "axios";
 // importing Images
 import Profile from "../Assets/profile_IMG.jpg";
 
@@ -7,8 +7,33 @@ import Profile from "../Assets/profile_IMG.jpg";
 import { FaInfoCircle } from "react-icons/fa";
 import { IoMdMore } from "react-icons/io";
 import { IoMdSend } from "react-icons/io";
+import { useParams } from "react-router-dom";
 
 const Stream = () => {
+  // Axios Request
+  const {id}=useParams(); 
+
+  const [cardInfo, setCardInfo] = useState([]);
+
+    useEffect(() =>{
+      const fetchInfo = async () => {
+        try {
+          const response = await axios.get(`http://localhost:4000/card_info/${id}`,{params:{id}});
+          setCardInfo((response.data)[0]); // Update state with API response
+          // console.log(response.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      fetchInfo();    
+    },[id]);
+
+  // const Data=cardInfo.stringify()
+  
+  
+
+
+
   const [isHidden, setHidden] = useState("hidden");
   //   Handels the info Part of the Class to make it visible or invisible
   const handleClick = () => {
@@ -32,8 +57,8 @@ const Stream = () => {
       {/* Header Section */}
       <div className="bg-[url('/src/Assets/img_learnlanguage.jpg')] bg-no-repeat w-4/5  mx-auto mt-20  p-2 pt-28  rounded-xl bg-cover flex justify-between">
         <span className="flex flex-col gap-1">
-          <h1 className="text-5xl text-white w-fit">Java Programming</h1>
-          <p className="text-2xl text-white w-fit">ODD sem TYIT (2024-25)</p>
+          <h1 className="text-5xl text-white w-fit">{cardInfo.subject_Name}</h1>
+          <p className="text-2xl text-white w-fit">{cardInfo.Name}</p>
         </span>
         <span
           className="hover:bg-gray-800 p-3 h-fit self-end rounded-full hover:opacity-50"
@@ -46,9 +71,9 @@ const Stream = () => {
       {/* Class Details */}
       <div className={isHidden}>
         <p className="w-4/5  mx-auto p-2 bg-white rounded-xl mt-2 font-semibold border-2 border-black ">
-          Subject: Java Programming
+          {cardInfo.subject_Name}
           <br />
-          Room: TYIT
+          Class Code: {cardInfo.code}
         </p>
       </div>
 

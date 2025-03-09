@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext ,useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import {sidebarVisible} from "./Navbar";
 // importing Images
 import Profile from "../Assets/profile_IMG.jpg";
@@ -20,6 +21,27 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { SidebarContext } from '../Context/SidebarContext';
 
 function Sidebar() {
+    // Backend Axios Requests
+    const [TeachClasses,setTeacherClasses] = useState([])
+     useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get("http://localhost:4000/card_data");
+            setTeacherClasses(response.data); // Update state with API response
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        };
+        
+        fetchData();
+      }, []); // Empty dependency array means this runs once on mount
+
+    // Backend Axios Requests Ends here
+
+
+
+
+
     const [isActive,setActive]=useState(true);  //used to toggle bewtween ON and OFF
     const [isActive2,setisActive2]=useState(true); 
     const [TeacherVisible,setTVisible]=useState("hidden");   //sets Teachers section to visible or invisible
@@ -52,12 +74,8 @@ function Sidebar() {
 
     
     // Data Section
-    
-    // This is the data for the Teaching Classes 
-    const TeachClasses=[
-        {name:"Classroom 1", img:Profile, alt:"classroom 1"},
-        {name:"Classroom 2", img:Profile, alt:"classroom 2"}
-    ];
+     
+   
     
     // This is the data for the Enrolled Classes 
     const EnrolledClasses=[
@@ -106,7 +124,7 @@ return (
     </span >
     {/* from Here on There will be bars of the classes you are teaching */}
 
-    {TeachClasses.map((data,index)=>(
+    {Array.isArray(TeachClasses) && TeachClasses.map((data,index)=>(
         <ProfCard key={index}{...data} />
     ))}  
 </section>
@@ -163,12 +181,12 @@ export default Sidebar;
 // Classroom Card/ Profile Card
 const ProfCard=(props)=>{
     return(
-        <Link to="/cardcontent">
+        <Link to={`/cardcontent/${props.id}`}>
         <span className='w-full flex gap-2 pl-8 hover:bg-blue-100 hover:cursor-pointer py-2 active:bg-blue-500'>
         
-        <img src={props.img} alt={props.alt} className='w-10 h-10 rounded-full bg-blue-500 overflow-hidden'/>
+        <img src={Profile} alt="Profile Image" className='w-10 h-10 rounded-full bg-blue-500 overflow-hidden'/>
         
-        <p className='my-auto text-black'>{props.name}</p>
+        <p className='my-auto text-black'>{props.subject_Name}</p>
         </span>
         </Link>
     )

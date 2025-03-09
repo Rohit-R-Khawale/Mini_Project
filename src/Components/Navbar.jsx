@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import axios from "axios";
 // import react icons
 import { CgMenu } from "react-icons/cg";
 import { GoPlus } from "react-icons/go";
@@ -16,7 +18,29 @@ import { SidebarContext } from '../Context/SidebarContext';
 
 
 function Navbar() {
-// ***************************************************************************
+    const {
+        register,
+        handleSubmit,
+        watch,
+        reset,
+        formState: { errors, isSubmitting },
+      } = useForm();
+
+      const Create_Class_onSubmit= async (data)=>{
+        const values={
+            Class_Name:data.class_Name,
+            Teacher_id:data.teacher_id,
+            Subject:data.subject,
+
+        }
+        // console.log(values);
+        const response= await axios.post("http://localhost:4000/create_class",values);
+
+        // console.log(response.data);
+        alert(response.data);
+        reset();
+      }
+    // ***************************************************************************
 // This code is for Navbar Page
 
 
@@ -84,7 +108,7 @@ const handlecheckboxStatus=()=>{
 }
 // This handles the Continue button Click
 const onSubmit=(checkboxStatus)=>{
-    console.log(checkboxStatus);
+    // console.log(checkboxStatus);
     if(checkboxStatus){
         hadleCreateClsForm();
         CrtClasspopHandler();
@@ -151,7 +175,7 @@ return (
     </section>
     </form>
   }
-
+{/* Create Class Popup */}
   {CrtClassPopup && 
   <form className='bg-white border-2 border-black popup p-3 rounded-md flex flex-col gap-3 w-2/5'>
     <h2 className='text-md font-bold text-gray-600 '>Using Classroom at a school/university with students?</h2>
@@ -178,28 +202,27 @@ return (
   }
 {/* Create Class Form */}
   {CrtClassFormpopup &&
-  <form className='bg-white border-2 border-black popup p-3 rounded-md flex flex-col gap-3 w-2/5'>
+  <form onSubmit={handleSubmit(Create_Class_onSubmit)} className='bg-white border-2 border-black popup p-3 rounded-md flex flex-col gap-3 w-2/5'>
     <span className='flex flex-col'>
         <label htmlFor="clsName">Class Name (required) </label>
-        <input type="text" id='clsName' className='border-2 rounded-md p-1 focus:border-b-4 focus:border-b-blue-800 focus:bg-gray-400 focus:text-white' required/>
+        <input type="text" id='clsName' className='border-2 rounded-md p-1 focus:border-b-4 focus:border-b-blue-800 focus:bg-gray-400 focus:text-white' required {...register("class_Name",{
+            required:{value:true, message: 'this field is required'}
+        })} />
     </span>
-    <span className='flex flex-col'>
-        <label htmlFor="section">Section </label>
-        <input type="text" id='section' className='border-2 rounded-md p-1 focus:border-b-4 focus:border-b-blue-800 focus:bg-gray-400 focus:text-white'/>
-    </span>
+    
     <span className='flex flex-col'>
         <label htmlFor="subject">Subject </label>
-        <input type="text" id='subject' className='border-2 rounded-md p-1 focus:border-b-4 focus:border-b-blue-800 focus:bg-gray-400 focus:text-white'/>
+        <input type="text" id='subject' className='border-2 rounded-md p-1 focus:border-b-4 focus:border-b-blue-800 focus:bg-gray-400 focus:text-white' {...register('subject')}/>
     </span>
     <span className='flex flex-col'>
-        <label htmlFor="room">Room </label>
-        <input type="text" id='room' className='border-2 rounded-md p-1 focus:border-b-4 focus:border-b-blue-800 focus:bg-gray-400 focus:text-white '/>
+        <label htmlFor="teacher_id">Teacher ID </label>
+        <input type="text" id='teacher_id' className='border-2 rounded-md p-1 focus:border-b-4 focus:border-b-blue-800 focus:bg-gray-400 focus:text-white ' {...register('teacher_id')}/>
     </span>
     
 
     <span className='flex gap-3 self-end'>
         <button className='w-14 bg-gray-400 hover:cursor-pointer hover:bg-blue-400 p-1 rounded-md hover:text-white ' onClick={hadleCreateClsForm}>Cancel</button>
-        <button className='w-14 bg-gray-400 hover:cursor-pointer hover:bg-blue-400 p-1 rounded-md hover:text-white '>Create</button>
+        <button className='w-14 bg-gray-400 hover:cursor-pointer hover:bg-blue-400 p-1 rounded-md hover:text-white ' type='submit'>Create</button>
     </span>
 
   </form>
@@ -213,15 +236,6 @@ return (
 < CgMenu className='text-3xl text-[#5F6368] scale-90  my-auto hover:cursor-pointer' onClick={sidebarHandler}/>
     <Link to="/" className='my-auto '><img src={LOGO} alt="classroom" className='w-10 h-10 scale-90 '/></Link>
     <Link to="/" className='my-auto text-3xl text-[#5F6368] hover:text-[#1E8E3E] hover:underline hover:cursor-pointer'>Classroom</Link>
-
-{/* This section should be visible when the focus is inside a Card */}
-    {/* <span className={isCard}>
-        <PiGreaterThan className='text-2xl text-[#5F6368] w-fit h-fit my-auto relative top-1 scale-90 font-bold max-md:hidden' />
-        <span className='text-[#646368] scale-90 hover:underline hover:cursor-pointer hover:text-blue-500 max-md:hidden'>
-            <p className='font-bold text-2xl'>Card Name</p>
-            Card owner Name
-        </span>
-    </span> */}
 </div>
 
 {/* Last Sections Profile/ Add Class and Apps */}
