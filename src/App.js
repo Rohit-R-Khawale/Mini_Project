@@ -16,9 +16,11 @@ import Stream from "./Pages/stream.jsx";
 import Classwork from "./Pages/Classwork.jsx";
 import People from "./Pages/People.jsx";
 import Marks from "./Pages/Marks.jsx";
+import Assignment from "./Pages/Assignment.jsx";
+import Material from"./Pages/Material.jsx";
 function App() {
   // this ensures that the usrer is currently logged in the session
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   // This is to ensure that the signin page comes first rather than the home page
   let Page;
   if (isLoggedIn) {
@@ -46,10 +48,14 @@ function App() {
             <Route path="/todo/assigned" element={<Todo />} />,
             <Route path="/todo/missing" element={<Todo />} />,
             <Route path="/todo/done" element={<Todo />} />,
+            
 
             ,
           </Route>
+          <Route path="/Assignment" element={<Assignment/>}/>
+          <Route path="/Material" element={<Material/>}/>
           <Route path="/signup" element={<SignUp />} />
+          
         </Routes>
       </SigninContext.Provider>
       {/* <Home /> */}
